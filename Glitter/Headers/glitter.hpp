@@ -22,7 +22,7 @@
 #include FT_FREETYPE_H  
 
 // Define Some Constants
-const int mWidth = 800;
-const int mHeight = 600;
+const int mWidth = 1600;
+const int mHeight = 900;
 
 #endif //~ Glitter Header

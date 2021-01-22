@@ -65,6 +65,7 @@ void RenderText(Shader &s, std::string text, float x, float y, float scale, glm:
         glBindBuffer(GL_ARRAY_BUFFER, 0);
         // render quad
         glDrawArrays(GL_TRIANGLES, 0, 6);
+
         // now advance cursors for next glyph (note that advance is number of 1/64 pixels)
         x += (ch.Advance >> 6) * scale; // bitshift by 6 to get value in pixels (2^6 = 64)
     }
@@ -226,17 +227,17 @@ int main(int argc, char * argv[]) {
         ourShader.setMat4("view", view);
     
         //model = glm::translate(model, glm::vec3(posX, posY, 0.0f));
-        model = glm::scale(model, glm::vec3(glm::vec2(100.0f, 100.0f), 1.0f));
+        //model = glm::scale(model, glm::vec3(glm::vec2(100.0f, 100.0f), 1.0f));
         ourShader.setMat4("model", model);
 
         glBindVertexArray(mesh.quadVAO);
         glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
-        model = glm::mat4(1.0f);
-        model = glm::translate(model, glm::vec3(20.0f, 500.0f, 0.0f));
-        model = glm::scale(model, glm::vec3(glm::vec2(100.0f, 100.0f), 1.0f));
-        glBindVertexArray(mesh.quadVAO);
-        ourShader.setMat4("model", model);
-        glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
+        // model = glm::mat4(1.0f);
+        // model = glm::translate(model, glm::vec3(20.0f, 500.0f, 0.0f));
+        // model = glm::scale(model, glm::vec3(glm::vec2(100.0f, 100.0f), 1.0f));
+        // glBindVertexArray(mesh.quadVAO);
+        // ourShader.setMat4("model", model);
+        // glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
 
          RenderText(textShader, "This is sample text", 25.0f, 25.0f, 1.0f, glm::vec3(0.5, 0.8f, 0.2f), mesh.quadTextVAO, mesh.quadTextVBO);
 
